@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.d3</groupId>
+	<artifactId>janken-web</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>janken-web</name>
+	<description>Web層用モジュール</description>
+
+    <parent>
+		<groupId>com.d3</groupId>
+		<artifactId>d3-monrep-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.d3</groupId>
+			<artifactId>d3-monrep-domain</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

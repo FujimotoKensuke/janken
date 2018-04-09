@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" th:href="@{/css/janken.css}"/>
+<title>じゃんけんゲーム</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1 th:text="${message}"></h1>
+        </div>
+        <div class="contents">
+            <a href="" th:href="@{/result}"><img th:src="@{/img/goo.jpg}" ></img></a>
+            <a href="" th:href="@{/result}"><img th:src="@{/img/choki.jpg}" ></img></a>
+            <a href="" th:href="@{/result}"><img th:src="@{/img/par.jpg}" ></img></a>
+        </div>
+    </div>
+</body>
