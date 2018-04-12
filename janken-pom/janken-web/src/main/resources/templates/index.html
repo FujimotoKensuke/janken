@@ -8,13 +8,19 @@
 <body>
     <div class="main">
         <div class="header">
-            <h1>じゃんけんゲーム</h1>>
+            <h1>じゃんけんゲーム</h1>
 
     <span th:text="${message}">この部分が動的に置き換えられます</span>
         </div>
         <form action="#" th:action="@{./battle}" method="post">
             <div class="contents">
                 <button type="submit" class="btn btn-default" >対戦開始</button>
+            </div>
+        </form>
+        <!-- CRUD制御学習用 -->
+        <form action="#" th:action="@{./userCreate}" method="post" >
+            <div class="contents">
+                <button type="submit" name="init" class="btn btn-default" >登録</button>
             </div>
         </form>
     </div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" th:href="@{/css/janken.css}"/>
+<title>じゃんけんゲーム</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>ユーザー登録</h1>
+            <p th:if="${message}" th:text="${message}" class="blue" />
+            <p th:if="${validationError}" th:text="${validationError}">validation error</p>
+        </div>
+        <form role="form" action="./userCreate" th:action="@{./userCreate}" th:object="${userCreateForm}" method="post">
+          <!-- userId -->
+          <div class="contents">
+            <label class="control-label" for="userId"><abbr title="required">*</abbr>ユーザーID</label>
+            <input type="text" class="form-control" id="userId" name="userId" th:field="*{userId}" />
+            <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="help-block">error!</span>
+          </div>
+          <!-- userName -->
+          <div class="contents">
+            <label class="control-label" for="userName"><abbr title="required">*</abbr>ユーザー名</label>
+            <input type="text" class="form-control" id="userName" name="userName" th:field="*{userName}" />
+            <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="help-block">error!</span>
+          </div>
+          <!-- comment -->
+          <div class="contents">
+            <label class="control-label" for="comment">コメント</label>
+            <input type="text" class="form-control" id="comment" name="comment" th:field="*{comment}" />
+            <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="help-block">error!</span>
+          </div>
+          <div class="contents">
+            <button type="submit" name="enter" class="btn btn-default" >登録</button>
+          </div>
+        </form>
+    </div>
+</body>

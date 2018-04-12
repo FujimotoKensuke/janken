@@ -32,3 +32,5 @@ dl#box dd{
 	_height: 1%; /* WinIEで頭の文字が右に微妙にずれるのを補正 */
 	margin-left: 5em;
 }
+.red  { color: 'red' };
+.blue { color: 'blue'}; 
