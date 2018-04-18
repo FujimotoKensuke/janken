@@ -6,6 +6,8 @@
 package com.domain.repository;
 
 import com.domain.model.UserModel;
+import com.infra.entity.UserInfoEntity;
+import java.util.List;
 
 /**
  * ユーザー情報リポジトリ
@@ -15,5 +17,7 @@ import com.domain.model.UserModel;
 public interface UserInfoRepository {
 
     void insertUser(UserModel model);
+
+    List<UserInfoEntity> selectUserList();
 
 }

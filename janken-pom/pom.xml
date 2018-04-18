@@ -20,10 +20,10 @@
 	</parent>
     
     <modules>
-        <module>janken-common</module>
-        <module>janken-web</module>
-        <module>janken-infra</module>
-        <module>janken-domain</module>
+       <module>janken-common</module>
+       <module>janken-web</module>
+       <module>janken-infra</module>
+       <module>janken-domain</module>
     </modules>
     
 	<dependencies>

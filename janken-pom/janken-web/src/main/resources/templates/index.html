@@ -12,16 +12,22 @@
 
     <span th:text="${message}">この部分が動的に置き換えられます</span>
         </div>
-        <form action="#" th:action="@{./battle}" method="post">
+        <form action="./battle" th:action="@{./battle}" method="post">
             <div class="contents">
                 <button type="submit" class="btn btn-default" >対戦開始</button>
             </div>
         </form>
         <!-- CRUD制御学習用 -->
-        <form action="#" th:action="@{./userCreate}" method="post" >
+        <form action="./userCreate" th:action="@{./userCreate}" method="post" >
             <div class="contents">
                 <button type="submit" name="init" class="btn btn-default" >登録</button>
             </div>
         </form>
+        <form action="./userList" th:action="@{./userList}" method="get" >
+            <div class="contents">
+                <button type="submit" class="btn btn-default" >一覧</button>
+            </div>
+        </form>
     </div>
 </body>
+</html>

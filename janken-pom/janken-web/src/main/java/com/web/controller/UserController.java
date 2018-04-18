@@ -1,7 +1,10 @@
 package com.web.controller;
 
 import com.domain.form.UserCreateForm;
+import com.domain.model.UserModel;
 import com.domain.model.UserModelFactory;
+import com.domain.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.domain.service.UserCreateService;
 
 /**
  * ユーザー情報関連コントローラ
@@ -21,7 +23,7 @@ import com.domain.service.UserCreateService;
 public class UserController {
 
     @Autowired
-    private UserCreateService userCreateService;
+    private UserService userService;
 
     /**
      * ユーザー情報登録(初期表示)API
@@ -40,9 +42,20 @@ public class UserController {
             model.addAttribute("validationError", "不正な値が入力されました。");
             return userCreateInit(form, model);
         }
-        userCreateService.create(UserModelFactory.create(form));
+        userService.create(UserModelFactory.create(form));
 
         model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
+    }
+
+    /**
+     * ユーザー情報取得API
+     */
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    public String getUserList(Model model) {
+
+        final List<UserModel> userModelList = userService.getUserList();
+        model.addAttribute("userModelList", userModelList);   // パラメタを渡す
+        return "userList"; // 使用するテンプレートの名前を指定する
     }
 }

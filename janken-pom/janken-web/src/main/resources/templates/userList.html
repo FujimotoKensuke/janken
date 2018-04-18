@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" th:href="@{/css/janken.css}"/>
+<title>じゃんけんゲーム</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>ユーザー一覧</h1>
+        </div>
+        <div class="contents">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ユーザーID</th>
+                        <th>ユーザー名</th>
+                        <th>コメント</th>
+                    </tr>
+                </thead>
+                <tbody th:remove="all-but-first" th:each="result : ${userModelList}">
+                    <tr>
+                        <td th:text="${result['userId']}">user01</td>
+                        <td><a href="userCreate.html" th:href="@{./userCreate(${result})}" th:text="${result['userName']}">太郎</a></td>
+                        <td th:text="${result['comment']}">コメント</td>
+                    </tr>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

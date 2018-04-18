@@ -10,6 +10,7 @@ import com.domain.factory.UserInfoEntityFactory;
 import com.domain.model.UserModel;
 import com.infra.entity.UserInfoEntity;
 import com.infra.mapper.UserInfoMapper;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +36,16 @@ public class UserInfoRepositoryImpl implements UserInfoRepository {
         entity.setVersion(0L);
 
         userInfoMapper.insert(entity);
+    }
+
+    /**
+     * ユーザー一覧情報取得
+     *
+     * @return
+     */
+    @Override
+    public List<UserInfoEntity> selectUserList() {
+        return userInfoMapper.selectList();
     }
 
 }

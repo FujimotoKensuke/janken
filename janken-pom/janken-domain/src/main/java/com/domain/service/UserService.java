@@ -6,6 +6,7 @@
 package com.domain.service;
 
 import com.domain.model.UserModel;
+import java.util.List;
 import org.springframework.lang.NonNull;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.lang.NonNull;
  *
  * @author k_fujimoto
  */
-public interface UserCreateService {
+public interface UserService {
 
     /**
      * ユーザー情報登録処理
@@ -21,5 +22,12 @@ public interface UserCreateService {
      * @param model
      */
     void create(@NonNull UserModel model);
+
+    /**
+     * ユーザー情報一覧取得処理
+     *
+     * @return
+     */
+    List<UserModel> getUserList();
 
 }

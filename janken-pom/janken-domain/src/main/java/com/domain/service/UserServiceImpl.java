@@ -6,7 +6,9 @@
 package com.domain.service;
 
 import com.domain.model.UserModel;
+import com.domain.model.UserModelFactory;
 import com.domain.repository.UserInfoRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author k_fujimoto
  */
 @Service
-public class UserCreateServiceImpl implements UserCreateService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserInfoRepository userInfoRepository;
@@ -33,6 +35,16 @@ public class UserCreateServiceImpl implements UserCreateService {
     public void create(@NonNull UserModel model) {
         // ユーザー情報登録
         userInfoRepository.insertUser(model);
+    }
+
+    /**
+     * ユーザー情報一覧取得処理
+     *
+     */
+    @Override
+    public List<UserModel> getUserList() {
+        // ユーザー情報一覧取得
+        return UserModelFactory.create(userInfoRepository.selectUserList());
     }
 
 }

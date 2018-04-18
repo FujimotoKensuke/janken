@@ -7,4 +7,7 @@
         INSERT INTO userinfo (id, name, comment, deletedFlg, version)
         VALUES (#{id}, #{name}, #{comment}, #{deletedFlg}, #{version})
     </insert>
+    <select id="selectList" resultType="com.infra.entity.UserInfoEntity">
+        SELECT id, name, comment, deletedFlg, version FROM userinfo
+    </select>
 </mapper>
