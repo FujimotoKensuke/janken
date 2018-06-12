@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" th:href="@{/css/janken.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 <title>じゃんけんゲーム</title>
 </head>
 <body>
@@ -20,11 +22,13 @@
                     </tr>
                 </thead>
                 <tbody th:remove="all-but-first" th:each="result : ${userModelList}">
-                    <tr>
-                        <td th:text="${result['userId']}">user01</td>
-                        <td><a href="userCreate.html" th:href="@{./userCreate(${result})}" th:text="${result['userName']}">太郎</a></td>
-                        <td th:text="${result['comment']}">コメント</td>
-                    </tr>    
+                    <form action="./userCreate" th:action="@{./userCreate}" method="post">
+                        <tr>
+                            <td th:text="${result['userId']}">user01</td>
+                            <td><input type="submit" class="btn btn-link" th:value="${result['userName']}" name="update" /></td>
+                            <td th:text="${result['comment']}">コメント</td>
+                        </tr>
+                    </form>
                 </tbody>
             </table>
         </div>

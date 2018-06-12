@@ -6,6 +6,7 @@ import com.domain.model.UserModelFactory;
 import com.domain.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,6 +44,20 @@ public class UserController {
             return userCreateInit(form, model);
         }
         userService.create(UserModelFactory.create(form));
+
+        model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
+        return "userCreate"; // 使用するテンプレートの名前を指定する
+    }
+
+    /**
+     * ユーザー情報登録(登録実行)API
+     *
+     * @param userModel
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/userCreate", params = "update", method = {RequestMethod.POST, RequestMethod.GET})
+    public String userUpdate(@NonNull @ModelAttribute UserModel userModel, Model model) {
 
         model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
