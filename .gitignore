@@ -22,3 +22,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/janken-pom/janken-web/nbproject/
+/janken-pom/janken-domain/nbproject/

@@ -24,6 +24,13 @@ public interface UserService {
     void create(@NonNull UserModel model);
 
     /**
+     * ユーザー情報更新処理
+     *
+     * @param model
+     */
+    void update(@NonNull UserModel model) throws Exception;
+
+    /**
      * ユーザー情報一覧取得処理
      *
      * @return

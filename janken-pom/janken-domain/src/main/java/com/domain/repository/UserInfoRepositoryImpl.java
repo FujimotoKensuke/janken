@@ -39,6 +39,27 @@ public class UserInfoRepositoryImpl implements UserInfoRepository {
     }
 
     /**
+     * ユーザー情報更新
+     *
+     * @param model
+     * @throws java.lang.Exception
+     */
+    @Override
+    public void updateUser(UserModel model) throws Exception {
+        // DBから情報取得
+        UserInfoEntity entity = UserInfoEntityFactory.create(model);
+        entity = userInfoMapper.selectForUpdate(entity);
+        //TODO:楽観ロックエラー実装(OptistimisticErrorException)
+        if (false) {
+            throw new Exception();
+        }
+
+        entity.setVersion(entity.getVersion() + 1L);
+
+        userInfoMapper.update(entity);
+    }
+
+    /**
      * ユーザー一覧情報取得
      *
      * @return

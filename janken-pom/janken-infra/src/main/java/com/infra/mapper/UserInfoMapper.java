@@ -13,5 +13,9 @@ public interface UserInfoMapper {
 
     void insert(UserInfoEntity entity);
 
+    void update(UserInfoEntity entity);
+
     List<UserInfoEntity> selectList();
+
+    UserInfoEntity selectForUpdate(UserInfoEntity entity);
 }

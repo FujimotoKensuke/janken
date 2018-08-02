@@ -18,6 +18,8 @@ public interface UserInfoRepository {
 
     void insertUser(UserModel model);
 
+    void updateUser(UserModel model) throws Exception;
+
     List<UserInfoEntity> selectUserList();
 
 }

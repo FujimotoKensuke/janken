@@ -6,7 +6,6 @@ import com.domain.model.UserModelFactory;
 import com.domain.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +30,7 @@ public class UserController {
      */
     @RequestMapping(value = "/userCreate", params = "init", method = RequestMethod.POST)
     public String userCreateInit(@ModelAttribute UserCreateForm form, Model model) {
+        model.addAttribute("updateFlg", 0);   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
     }
 
@@ -46,6 +46,16 @@ public class UserController {
         userService.create(UserModelFactory.create(form));
 
         model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
+        model.addAttribute("updateFlg", 0);   // パラメタを渡す
+        return "userCreate"; // 使用するテンプレートの名前を指定する
+    }
+
+    /**
+     * ユーザー情報更新(初期表示)API
+     */
+    @RequestMapping(value = "/userUpdate", method = {RequestMethod.POST, RequestMethod.GET})
+    public String userUpdateInit(@ModelAttribute UserCreateForm form, Model model) {
+        model.addAttribute("updateFlg", 1);   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
     }
 
@@ -57,9 +67,15 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/userCreate", params = "update", method = {RequestMethod.POST, RequestMethod.GET})
-    public String userUpdate(@NonNull @ModelAttribute UserModel userModel, Model model) {
+    public String userUpdateDone(@Validated @ModelAttribute UserCreateForm form, BindingResult result, Model model) throws Exception {
+        if (result.hasErrors()) {
+            model.addAttribute("validationError", "不正な値が入力されました。");
+            return userCreateInit(form, model);
+        }
+        userService.update(UserModelFactory.create(form));
 
-        model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
+        model.addAttribute("message", "ユーザー情報を更新しました。");   // パラメタを渡す
+        model.addAttribute("updateFlg", 1);   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
     }
 

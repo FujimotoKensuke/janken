@@ -18,7 +18,8 @@
           <!-- userId -->
           <div class="contents">
             <label class="control-label" for="userId"><abbr title="required">*</abbr>ユーザーID</label>
-            <input type="text" class="form-control" id="userId" name="userId" th:field="*{userId}" />
+            <input type="text" class="form-control" id="userId" name="userId" th:field="*{userId}" th:if="${updateFlg == 0}"/>
+            <input type="text" class="form-control" id="userId" name="userId" th:field="*{userId}" th:if="${updateFlg == 1}"  readonly="readonly" />
             <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="help-block">error!</span>
           </div>
           <!-- userName -->
@@ -33,8 +34,11 @@
             <input type="text" class="form-control" id="comment" name="comment" th:field="*{comment}" />
             <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="help-block">error!</span>
           </div>
-          <div class="contents">
+          <div class="contents"　th:if="${updateFlg == 0}">
             <button type="submit" name="enter" class="btn btn-default" >登録</button>
+          </div>
+          <div class="contents"　th:if="${updateFlg == 1}">
+            <button type="submit" name="update" class="btn btn-default" >更新</button>
           </div>
         </form>
     </div>

@@ -5,6 +5,7 @@
 <link rel="stylesheet" th:href="@{/css/janken.css}"/>
 <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+<script type="text/javascript" src="js/userUpdate.js" th:src="@{/js/userUpdate.js}"></script>
 <title>じゃんけんゲーム</title>
 </head>
 <body>
@@ -23,9 +24,9 @@
                 </thead>
                 <tbody th:remove="all-but-first" th:each="result : ${userModelList}">
                     <form action="./userCreate" th:action="@{./userCreate}" method="post">
-                        <tr>
+                        <tr onclick="update(this)">
                             <td th:text="${result['userId']}">user01</td>
-                            <td><input type="submit" class="btn btn-link" th:value="${result['userName']}" name="update" /></td>
+                            <td th:text="${result['userName']}">userName</td>
                             <td th:text="${result['comment']}">コメント</td>
                         </tr>
                     </form>

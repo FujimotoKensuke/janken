@@ -38,6 +38,18 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * ユーザー情報更新処理
+     *
+     * @param model
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(@NonNull UserModel model) throws Exception {
+        // ユーザー情報登録
+        userInfoRepository.updateUser(model);
+    }
+
+    /**
      * ユーザー情報一覧取得処理
      *
      */
